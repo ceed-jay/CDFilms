@@ -3,12 +3,9 @@ import React from 'react';
 import { Camera, Film, Heart, Sparkles } from 'lucide-react';
 import { Service, PortfolioItem, PricingPackage, Testimonial } from './types';
 
-// BRAND ASSETS
 export const LOGO_URL = 'https://i.imgur.com/1k6O2IZ.png';
-
-// SOCIAL MEDIA LINKS - Change these to your actual URLs
 export const SOCIAL_LINKS = {
-  facebook: 'https://www.facebook.com/clifforddendirofilms', // Replace with your actual FB link
+  facebook: 'https://www.facebook.com/clifforddendirofilms',
 };
 
 export const SERVICES: Service[] = [
