@@ -36,11 +36,10 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        overflow: hidden; /* Prevent scrolling */
+        overflow: hidden;
         background-color: #fdfbf7;
       }
       
-      /* Cinematic Wedding Background */
       .wedding-bg {
         background-color: #fdfbf7;
         background-image: 
@@ -49,7 +48,6 @@
         position: relative;
       }
 
-      /* Subtle Floral Watermark Decoration */
       .floral-overlay::before {
         content: "";
         position: absolute;
@@ -65,13 +63,11 @@
         z-index: 0;
       }
 
-      /* Alternate Wedding Background for Services/Pricing */
       .wedding-bg-alt {
         background-color: #f9f7f2;
         background-image: url("https://www.transparenttextures.com/patterns/linen-paper.png");
       }
       
-      /* Animation for section transitions */
       .section-fade-enter {
         opacity: 0;
         transform: translateY(10px);
@@ -82,7 +78,6 @@
         transition: opacity 600ms ease-out, transform 600ms ease-out;
       }
       
-      /* Scrollbar hiding for internal sections if needed */
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
