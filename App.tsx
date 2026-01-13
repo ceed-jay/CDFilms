@@ -15,17 +15,13 @@ function App() {
   const [activeSection, setActiveSection] = useState<SectionType>('hero');
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Advanced Security & Deterrent Logic
   useEffect(() => {
-    // 1. Disable Right Click (Context Menu)
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
       return false;
     };
 
-    // 2. Disable Key Shortcuts for DevTools, Saving, Printing, and Selecting
     const handleKeyDown = (e: KeyboardEvent) => {
-      // F12 key
       if (e.key === 'F12') {
         e.preventDefault();
         return false;
@@ -34,39 +30,32 @@ function App() {
       const isCtrlOrMeta = e.ctrlKey || e.metaKey;
       const isShift = e.shiftKey;
 
-      // Disable Ctrl+Shift+I, J, C (Inspect/Console/Elements)
       if (isCtrlOrMeta && isShift && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
         e.preventDefault();
         return false;
       }
 
-      // Disable Ctrl+U (View Source)
       if (isCtrlOrMeta && (e.key === 'U' || e.key === 'u')) {
         e.preventDefault();
         return false;
       }
 
-      // Disable Ctrl+S (Save Page)
       if (isCtrlOrMeta && (e.key === 'S' || e.key === 's')) {
         e.preventDefault();
         return false;
       }
 
-      // Disable Ctrl+P (Print Page)
       if (isCtrlOrMeta && (e.key === 'P' || e.key === 'p')) {
         e.preventDefault();
         return false;
       }
-
-      // Disable Ctrl+A (Select All)
+      
       if (isCtrlOrMeta && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
         return false;
       }
     };
 
-    // 3. Persistent Debugger Deterrent
-    // This loop forces the browser to pause execution whenever developer tools are opened.
     const startDeterrent = () => {
       const deterrent = function() {
         (function() {
@@ -92,7 +81,6 @@ function App() {
       } catch (e) {}
     };
 
-    // 4. Console Clear Deterrent
     const consoleSpam = setInterval(() => {
       console.clear();
       console.log("%cSecurity: Inspection is disabled on this site.", "color: red; font-size: 20px; font-weight: bold;");
@@ -103,7 +91,6 @@ function App() {
     window.addEventListener('contextmenu', handleContextMenu);
     window.addEventListener('keydown', handleKeyDown);
 
-    // Prevent drag and drop of images
     window.addEventListener('dragstart', (e) => {
       if ((e.target as HTMLElement).tagName === 'IMG') {
         e.preventDefault();
@@ -118,17 +105,15 @@ function App() {
     };
   }, []);
 
-  // Function to navigate between windows
   const navigateTo = (section: SectionType) => {
     if (section === activeSection) return;
     setIsTransitioning(true);
     setTimeout(() => {
       setActiveSection(section);
       setIsTransitioning(false);
-    }, 400); // Wait for fade out
+    }, 400);
   };
 
-  // Sync with custom events from Navbar
   useEffect(() => {
     const handleNav = (e: any) => {
       const target = e.detail?.section as SectionType;
