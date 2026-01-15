@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Camera, Film, Heart, Sparkles } from 'lucide-react';
-import { Service, PortfolioItem, PricingPackage, Testimonial } from './types';
+import { Service, PortfolioItem, PricingPackage, Testimonial } from './types';  
 
 export const LOGO_URL = 'https://i.imgur.com/1k6O2IZ.png';
 
@@ -69,12 +69,12 @@ export const SERVICES: Service[] = [
 export const PORTFOLIO: PortfolioItem[] = [
   {
     id: 1,
-    title: 'Modern Cinematic Reel',
+    title: 'Alberto & Carmelie SDE',
     couple: 'Featured Highlights',
     category: 'SDE',
     type: 'video',
-    thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1920&h=1080',
-    videoUrl: 'https://www.facebook.com/reel/1550650799594616',
+    thumbnail: 'https://i.imgur.com/zCJd1w0.jpeg',
+    videoUrl: 'https://www.youtube.com/watch?v=A9VG3yhYlLA',
     description: 'A high-energy showcase of our signature cinematic style, blending slow-motion artistry with fast-paced storytelling to capture the essence of a modern wedding celebration.'
   },
   {
@@ -95,7 +95,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     type: 'video',
     thumbnail: 'https://i.imgur.com/w7f7CVt.jpeg',
     videoUrl: 'https://youtu.be/qIG2AHa7Wz8?si=QjfKEkmUAKHWc3z0',
-    description: 'A film of Jim and Trizias love story in an inspired koren concept CLOY. Their playful interactions and heartfelt moments are beautifully captured, showcasing their unique bond and excitement for their upcoming wedding.'
+    description: "A film of Jim and Trizias love story in an inspired koren concept CLOY. Their playful interactions and heartfelt moments are beautifully captured, showcasing their unique bond and excitement for their upcoming wedding."
   },
   {
     id: 4,
