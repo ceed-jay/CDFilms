@@ -69,30 +69,33 @@ export const SERVICES: Service[] = [
 export const PORTFOLIO: PortfolioItem[] = [
   {
     id: 1,
-    title: 'A Love Beyond Borders',
-    couple: 'Mark Gil Anthony & Maria Nova',
-    category: 'PRENUP',
+    title: 'Modern Cinematic Reel',
+    couple: 'Featured Highlights',
+    category: 'SDE',
     type: 'video',
-    thumbnail: 'https://i.imgur.com/5caLhT1.png',
-    videoUrl: 'https://www.youtube.com/embed/85w7yUDdDWo'
+    thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1920&h=1080',
+    videoUrl: 'https://www.facebook.com/reel/1550650799594616',
+    description: 'A high-energy showcase of our signature cinematic style, blending slow-motion artistry with fast-paced storytelling to capture the essence of a modern wedding celebration.'
   },
   {
     id: 2,
+    title: 'A Love Beyond Borders',
+    couple: 'Mark Gil Anthony & Maria Nova',
+    category: 'Prenup',
+    type: 'video',
+    thumbnail: 'https://i.imgur.com/5caLhT1.png',
+    videoUrl: 'https://www.youtube.com/watch?v=85w7yUDdDWo',
+    description: 'This prenup film explores the quiet, intimate connection between Mark and Maria. Set against breathtaking landscapes, it captures the anticipation and pure joy of their journey toward the altar.'
+  },
+  {
+    id: 3,
     title: 'Enchanted Garden Vows',
     couple: 'Mark & Elena',
     category: 'Feature',
     type: 'video',
-    thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  },
-  {
-    id: 3,
-    title: 'Urban Romance',
-    couple: 'Leo & Mia',
-    category: 'Prenup',
-    type: 'photo',
-    thumbnail: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800',
-    fullImageUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=1600'
+    thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920&h=1080',
+    videoUrl: 'https://www.youtube.com/watch?v=A8f98rX2o7k',
+    description: 'A feature film that documents the solemnity and celebration of a garden wedding. We focused on the natural light and candid interactions that made this day truly magical.'
   },
   {
     id: 4,
@@ -100,35 +103,9 @@ export const PORTFOLIO: PortfolioItem[] = [
     couple: 'David & Chloe',
     category: 'SDE',
     type: 'video',
-    thumbnail: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  },
-  {
-    id: 5,
-    title: 'Vintage Coastal Dream',
-    couple: 'Ryan & Sophia',
-    category: 'Prenup',
-    type: 'photo',
-    thumbnail: 'https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=800',
-    fullImageUrl: 'https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=1600'
-  },
-  {
-    id: 6,
-    title: 'Ethereal Forest Union',
-    couple: 'Ethan & Isabella',
-    category: 'Feature',
-    type: 'photo',
-    thumbnail: 'https://images.unsplash.com/photo-1465495910483-0d6749718482?auto=format&fit=crop&q=80&w=800',
-    fullImageUrl: 'https://images.unsplash.com/photo-1465495910483-0d6749718482?auto=format&fit=crop&q=80&w=1600'
-  },
-  {
-    id: 7,
-    title: 'The Golden Hour',
-    couple: 'Alex & Sam',
-    category: 'SDE',
-    type: 'photo',
-    thumbnail: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800',
-    fullImageUrl: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1600'
+    thumbnail: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=1920&h=1080',
+    videoUrl: 'https://www.facebook.com/clifforddendirofilms/videos/1083074092965611/',
+    description: 'Captured and edited on the same day, this film was the highlight of the reception. It showcases the emotional weight of the ceremony and the vibrant energy of the sunset celebration.'
   }
 ];
 
