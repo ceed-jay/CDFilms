@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   };
 
   // Video ID from the portfolio (Mark Gil Anthony & Maria Nova)
-  const videoId = '85w7yUDdDWo';
+  const videoId = 'FcJC_0dqdds';
   const videoUrl = `https://www.youtube.com/embed/FcJC_0dqdds?si=KbqE9aGJCaHadPYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"`;
 
   return (
