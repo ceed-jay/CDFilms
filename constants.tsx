@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Camera, Film, Heart, Sparkles } from 'lucide-react';
 import { Service, PortfolioItem, PricingPackage, Testimonial } from './types';
@@ -71,7 +72,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: 'A Love Beyond Borders',
     couple: 'James & Sarah',
     category: 'SDE',
-    thumbnail: 'https://picsum.photos/seed/wed1/800/600',
+    type: 'video',
+    thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
@@ -79,7 +81,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: 'Enchanted Garden Vows',
     couple: 'Mark & Elena',
     category: 'Feature',
-    thumbnail: 'https://picsum.photos/seed/wed2/800/600',
+    type: 'video',
+    thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
@@ -87,15 +90,17 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: 'Urban Romance',
     couple: 'Leo & Mia',
     category: 'Prenup',
-    thumbnail: 'https://picsum.photos/seed/wed3/800/600',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    type: 'photo',
+    thumbnail: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800',
+    fullImageUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=1600'
   },
   {
     id: 4,
     title: 'Sunset Serenade',
     couple: 'David & Chloe',
     category: 'SDE',
-    thumbnail: 'https://picsum.photos/seed/wed4/800/600',
+    type: 'video',
+    thumbnail: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
@@ -103,16 +108,27 @@ export const PORTFOLIO: PortfolioItem[] = [
     title: 'Vintage Coastal Dream',
     couple: 'Ryan & Sophia',
     category: 'Prenup',
-    thumbnail: 'https://picsum.photos/seed/wed5/800/600',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    type: 'photo',
+    thumbnail: 'https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=800',
+    fullImageUrl: 'https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=1600'
   },
   {
     id: 6,
     title: 'Ethereal Forest Union',
     couple: 'Ethan & Isabella',
     category: 'Feature',
-    thumbnail: 'https://picsum.photos/seed/wed6/800/600',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    type: 'photo',
+    thumbnail: 'https://images.unsplash.com/photo-1465495910483-0d6749718482?auto=format&fit=crop&q=80&w=800',
+    fullImageUrl: 'https://images.unsplash.com/photo-1465495910483-0d6749718482?auto=format&fit=crop&q=80&w=1600'
+  },
+  {
+    id: 7,
+    title: 'The Golden Hour',
+    couple: 'Alex & Sam',
+    category: 'SDE',
+    type: 'photo',
+    thumbnail: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800',
+    fullImageUrl: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1600'
   }
 ];
 
@@ -164,20 +180,20 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Sophia & Michael',
     date: 'June 2023',
     text: 'Watching our SDE during the reception was the highlight of our night. CDFilms captured the raw emotions we didn\'t even know were visible.',
-    image: 'https://picsum.photos/seed/couple1/200/200'
+    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=200'
   },
   {
     id: 2,
     name: 'Isabella & Daniel',
     date: 'September 2023',
     text: 'Their cinematic approach is unmatched. The prenup shoot felt so natural, and the final film looked like a Hollywood production.',
-    image: 'https://picsum.photos/seed/couple2/200/200'
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=200'
   },
   {
     id: 3,
     name: 'Elena & Mark',
     date: 'December 2023',
     text: 'Professional, discreet, and incredibly talented. They found the perfect balance between artistic shots and candid moments.',
-    image: 'https://picsum.photos/seed/couple3/200/200'
+    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=200'
   }
 ];
