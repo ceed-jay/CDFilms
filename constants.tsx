@@ -95,7 +95,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     type: 'video',
     thumbnail: 'https://i.imgur.com/w7f7CVt.jpeg',
     videoUrl: 'https://youtu.be/qIG2AHa7Wz8?si=QjfKEkmUAKHWc3z0',
-    description: "A film of Jim and Trizia's love story in an inspired koren concept CLOY. Their playful interactions and heartfelt moments are beautifully captured, showcasing their unique bond and excitement for their upcoming wedding."
+    description: 'A film of Jim and Trizias love story in an inspired koren concept CLOY. Their playful interactions and heartfelt moments are beautifully captured, showcasing their unique bond and excitement for their upcoming wedding.'
   },
   {
     id: 4,
