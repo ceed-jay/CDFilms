@@ -6,17 +6,38 @@ const Hero: React.FC = () => {
     window.dispatchEvent(new CustomEvent('app-navigate', { detail: { section } }));
   };
 
-  // Video ID from the portfolio (Mark Gil Anthony & Maria Nova)
+  // Video ID: FcJC_0dqdds
   const videoId = 'FcJC_0dqdds';
-  const videoUrl = `https://www.youtube.com/embed/FcJC_0dqdds?si=KbqE9aGJCaHadPYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"`;
+  
+  // To enable autoplay in modern browsers, the video MUST be muted (mute=1).
+  // To enable looping, you must provide the playlist parameter with the same video ID.
+  const videoParams = [
+    'autoplay=1',
+    'mute=1',
+    'loop=1',
+    `playlist=${videoId}`,
+    'controls=0',
+    'showinfo=0',
+    'rel=0',
+    'iv_load_policy=3',
+    'modestbranding=1',
+    'playsinline=1',
+    'enablejsapi=1'
+  ].join('&');
+
+  const videoUrl = `https://www.youtube.com/embed/${videoId}?${videoParams}`;
 
   return (
     <section className="h-full w-full flex items-center justify-center relative overflow-hidden bg-black pt-24 md:pt-32">
       {/* Background Video Container */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* 
+            Calculated dimensions for 16:9 ratio to ensure background cover.
+            Using a slightly larger width/height (110%) to prevent black bars on window resize.
+          */}
           <iframe
-            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 object-cover"
+            className="absolute top-1/2 left-1/2 w-[115vw] h-[65vw] min-h-[115vh] min-w-[204vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
             src={videoUrl}
             frameBorder="0"
             allow="autoplay; encrypted-media"
@@ -26,9 +47,9 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Overlays for Text Legibility & Style */}
-      <div className="absolute inset-0 z-[1] bg-black/40 backdrop-blur-[1px]"></div>
-      <div className="absolute inset-0 z-[2] wedding-bg opacity-30 mix-blend-overlay"></div>
-      <div className="absolute inset-0 z-[3] bg-gradient-to-b from-black/60 via-transparent to-black/60"></div>
+      <div className="absolute inset-0 z-[1] bg-black/50 backdrop-blur-[1px]"></div>
+      <div className="absolute inset-0 z-[2] wedding-bg opacity-20 mix-blend-overlay"></div>
+      <div className="absolute inset-0 z-[3] bg-gradient-to-b from-black/70 via-transparent to-black/80"></div>
 
       {/* Content Layer */}
       <div className="relative z-10 text-center px-6 max-w-5xl">
