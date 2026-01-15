@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjggkrzo';
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgoovzkb';
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
