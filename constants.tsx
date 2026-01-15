@@ -70,10 +70,10 @@ export const PORTFOLIO: PortfolioItem[] = [
   {
     id: 1,
     title: 'A Love Beyond Borders',
-    couple: 'James & Sarah',
-    category: 'SDE',
+    couple: 'Mark Gil Anthony & Maria Nova',
+    category: 'PRENUP',
     type: 'video',
-    thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800',
+    thumbnail: 'https://i.imgur.com/5caLhT1.png',
     videoUrl: 'https://www.youtube.com/embed/85w7yUDdDWo'
   },
   {
