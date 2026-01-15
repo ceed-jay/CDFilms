@@ -11,8 +11,10 @@ export interface PortfolioItem {
   title: string;
   couple: string;
   category: 'SDE' | 'Prenup' | 'Feature';
+  type: 'video' | 'photo';
   thumbnail: string;
-  videoUrl: string;
+  videoUrl?: string; 
+  fullImageUrl?: string;
 }
 
 export interface PricingPackage {
