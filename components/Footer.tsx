@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { SOCIAL_LINKS } from '../constants';
 
@@ -19,7 +18,6 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-6">
-            {/* Navigation links hidden on mobile, visible on medium screens (md) and up */}
             <div className="hidden md:flex flex-wrap justify-center gap-5">
               {[
                 { name: 'About', id: 'about' },

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Check } from 'lucide-react';
 import { PRICING } from '../constants';
@@ -27,7 +26,6 @@ const Pricing: React.FC = () => {
                 pkg.isPopular ? 'ring-1 ring-gold shadow-gold/10' : ''
               }`}
             >
-              {/* Image Header - Reduced Height */}
               <div className="relative h-40 overflow-hidden">
                 <img 
                   src={pkg.image} 
@@ -48,7 +46,6 @@ const Pricing: React.FC = () => {
                 </div>
               </div>
 
-              {/* Content Body - Compact Padding */}
               <div className="p-6 flex flex-col flex-grow">
                 <p className="text-gray-500 text-xs leading-relaxed mb-6 italic">
                   "{pkg.description}"

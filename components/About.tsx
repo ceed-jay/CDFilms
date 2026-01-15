@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const About: React.FC = () => {
@@ -14,7 +13,6 @@ const About: React.FC = () => {
                 className="w-full h-full object-cover transition-all duration-700"
               />
             </div>
-            {/* Decorative elements */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-gold hidden md:block"></div>
             <div className="absolute -top-6 -left-6 w-32 h-32 border-t-2 border-l-2 border-gold hidden md:block"></div>
           </div>

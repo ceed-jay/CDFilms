@@ -1,12 +1,37 @@
-
-import React from 'react';
-import { Mail, Phone, Facebook } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, Facebook, CheckCircle, AlertCircle } from 'lucide-react';
 import { SOCIAL_LINKS } from '../constants';
 
 const Contact: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Thank you! Your message has been sent to CDFilms.");
+    setStatus('submitting');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjggkrzo';
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -56,73 +81,109 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm p-5 md:p-12 shadow-xl border border-neutral-100">
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-              <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                <div>
-                  <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Your Name</label>
-                  <input 
-                    type="text" 
-                    required
-                    className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors"
-                    placeholder="Enter full name"
-                  />
+          <div className="bg-white/80 backdrop-blur-sm p-5 md:p-12 shadow-xl border border-neutral-100 relative overflow-hidden">
+            {status === 'success' ? (
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12 animate-in fade-in zoom-in duration-500">
+                <div className="w-16 h-16 bg-gold/10 text-gold rounded-full flex items-center justify-center">
+                  <CheckCircle size={40} />
                 </div>
-                <div>
-                  <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Email Address</label>
-                  <input 
-                    type="email" 
-                    required
-                    className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors"
-                    placeholder="example@mail.com"
-                  />
-                </div>
+                <h3 className="text-2xl font-serif text-black">Message Sent Successfully!</h3>
+                <p className="text-gray-500 max-w-xs">
+                  Thank you for reaching out. Clifford will get back to you personally within 24-48 hours to discuss your love story.
+                </p>
+                <button 
+                  onClick={() => setStatus('idle')}
+                  className="mt-6 text-[10px] font-bold tracking-widest uppercase text-gold hover:underline"
+                >
+                  Send another message
+                </button>
               </div>
-              
-              <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                <div>
-                  <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Contact Number</label>
-                  <input 
-                    type="tel" 
-                    required
-                    className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors"
-                    placeholder="+63 XXX-XXX-XXXX"
-                  />
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                  <div>
+                    <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2 text-black/70">Your Name</label>
+                    <input 
+                      name="name"
+                      type="text" 
+                      required
+                      className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors text-black"
+                      placeholder="Enter full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2 text-black/70">Email Address</label>
+                    <input 
+                      name="email"
+                      type="email" 
+                      required
+                      className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors text-black"
+                      placeholder="example@mail.com"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Wedding Date</label>
-                  <input 
-                    type="date" 
-                    required
-                    className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors"
-                  />
+                
+                <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+                  <div>
+                    <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2 text-black/70">Contact Number</label>
+                    <input 
+                      name="phone"
+                      type="tel" 
+                      required
+                      className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors text-black"
+                      placeholder="+63 XXX-XXX-XXXX"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2 text-black/70">Wedding Date</label>
+                    <input 
+                      name="wedding_date"
+                      type="date" 
+                      required
+                      className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors text-black"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Interested In</label>
-                <select className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors appearance-none">
-                  <option value="">Select a Package</option>
-                  <option value="essential">CINEMATIC ESSENTIAL PACKAGE</option>
-                  <option value="signature">CINEMATIC SIGNATURE PACKAGE</option>
-                  <option value="grand">CINEMATIC GRAND PACKAGE</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Your Story / Message</label>
-                <textarea 
-                  rows={3}
-                  className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors"
-                  placeholder="Tell us a little about your wedding..."
-                ></textarea>
-              </div>
-              <button 
-                type="submit"
-                className="w-full py-3.5 md:py-5 bg-black text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase transition-all hover:bg-gold hover:scale-[1.02] shadow-xl shadow-black/5"
-              >
-                Send Message
-              </button>
-            </form>
+                <div>
+                  <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2 text-black/70">Interested In</label>
+                  <select 
+                    name="package"
+                    className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors appearance-none text-black"
+                  >
+                    <option value="">Select a Package</option>
+                    <option value="essential">CINEMATIC ESSENTIAL PACKAGE</option>
+                    <option value="signature">CINEMATIC SIGNATURE PACKAGE</option>
+                    <option value="grand">CINEMATIC GRAND PACKAGE</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[9px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2 text-black/70">Your Story / Message</label>
+                  <textarea 
+                    name="message"
+                    rows={3}
+                    className="w-full bg-white border border-neutral-200 px-3 py-2 md:px-4 md:py-3 text-sm focus:outline-none focus:border-gold transition-colors text-black"
+                    placeholder="Tell us a little about your wedding..."
+                  ></textarea>
+                </div>
+
+                {status === 'error' && (
+                  <div className="flex items-center gap-2 text-red-500 text-xs py-2">
+                    <AlertCircle size={14} />
+                    <span>Oops! Something went wrong. Please try again.</span>
+                  </div>
+                )}
+
+                <button 
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className={`w-full py-3.5 md:py-5 text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase transition-all shadow-xl shadow-black/5 flex items-center justify-center gap-2
+                    ${status === 'submitting' ? 'bg-neutral-400 cursor-not-allowed' : 'bg-black hover:bg-gold hover:scale-[1.02]'}`}
+                >
+                  {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

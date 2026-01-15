@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -49,7 +48,7 @@ function App() {
         e.preventDefault();
         return false;
       }
-      
+
       if (isCtrlOrMeta && (e.key === 'A' || e.key === 'a')) {
         e.preventDefault();
         return false;
@@ -137,7 +136,6 @@ function App() {
 
   return (
     <div className="h-screen w-full relative bg-white overflow-hidden select-none" onCopy={(e) => e.preventDefault()}>
-      {/* Dynamic Island Header floats over everything */}
       <Navbar activeSection={activeSection} onNavigate={navigateTo} />
       
       <main className="h-full w-full relative">
@@ -146,24 +144,19 @@ function App() {
             isTransitioning ? 'opacity-0 scale-95 blur-sm' : 'opacity-100 scale-100 blur-0'
           }`}
         >
-          {/* Main scrollable container */}
           <div className="h-full w-full overflow-y-auto no-scrollbar">
             {renderSection()}
-            
-            {/* Unified cinematic footer at the end of each section's scroll */}
             <Footer />
           </div>
         </div>
       </main>
       
       <style>{`
-        /* Global CSS protections */
         * {
           -webkit-tap-highlight-color: transparent;
           outline: none !important;
         }
 
-        /* Disable text selection and copying */
         body, html, #root {
           user-select: none !important;
           -webkit-user-select: none !important;
@@ -171,7 +164,6 @@ function App() {
           -ms-user-select: none !important;
         }
 
-        /* Prevent image dragging and saving */
         img {
           -webkit-user-drag: none !important;
           user-drag: none !important;
@@ -183,7 +175,6 @@ function App() {
           -webkit-user-select: none !important;
         }
 
-        /* Hide scrollbar */
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }

@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Camera, Film, Heart, Sparkles } from 'lucide-react';
 import { Service, PortfolioItem, PricingPackage, Testimonial } from './types';
 
 export const LOGO_URL = 'https://i.imgur.com/1k6O2IZ.png';
+
 export const SOCIAL_LINKS = {
   facebook: 'https://www.facebook.com/clifforddendirofilms',
 };

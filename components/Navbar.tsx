@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Home, Info, Video, Briefcase, Box, Calendar } from 'lucide-react';
 import { SectionType } from '../App';
@@ -12,8 +11,6 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Determine if the background is dark based on section. 
-  // Portfolio is still dark-themed.
   const isDarkSection = ['portfolio'].includes(activeSection);
 
   const navLinks: { name: string; id: SectionType; icon: React.ReactNode }[] = [
@@ -31,7 +28,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
 
   return (
     <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-6 pointer-events-none">
-      {/* Background Blur Overlay - Mobile Only */}
       {isMobileMenuOpen && (
         <div 
           className="fixed inset-0 bg-black/30 backdrop-blur-md md:hidden pointer-events-auto animate-in fade-in duration-300"
@@ -40,7 +36,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
         />
       )}
 
-      {/* The Dynamic Island Container */}
       <nav 
         className={`
           pointer-events-auto
@@ -56,7 +51,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
           }
         `}
       >
-        {/* Logo Section */}
         <button 
           onClick={() => handleLinkClick('hero')} 
           className={`flex items-center gap-2 outline-none transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 scale-110' : 'pl-3'}`}
@@ -73,7 +67,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
           </span>
         </button>
 
-        {/* Desktop Menu */}
         <div className={`hidden md:flex items-center gap-1 ${isMobileMenuOpen ? 'hidden' : ''}`}>
           {navLinks.map((link) => (
             <button
@@ -95,7 +88,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
             </button>
           ))}
           
-          {/* Desktop Book Now Button */}
           <button
             onClick={() => handleLinkClick('contact')}
             className={`
@@ -111,7 +103,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-black/5 outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -123,7 +114,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
           )}
         </button>
 
-        {/* Mobile Menu Content */}
         {isMobileMenuOpen && (
           <div className="w-full flex flex-col gap-2 animate-in fade-in zoom-in-95 duration-300">
             {navLinks.map((link) => (
@@ -140,7 +130,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
               </button>
             ))}
             
-            {/* Mobile Book Now Button */}
             <button
               onClick={() => handleLinkClick('contact')}
               className={`

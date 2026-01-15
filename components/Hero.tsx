@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Hero: React.FC = () => {
@@ -8,7 +7,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="h-full w-full flex items-center justify-center relative overflow-hidden wedding-bg pt-24 md:pt-32">
-      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl">
         <p className="text-gold text-sm md:text-base font-medium tracking-[0.3em] uppercase mb-4 animate-fade-in-up">
           Turning Your Love Story Into Timeless Films
@@ -31,7 +29,7 @@ const Hero: React.FC = () => {
             onClick={() => triggerNav('contact')}
             className="w-full md:w-auto px-10 py-4 bg-gold text-white font-bold tracking-widest uppercase transition-all hover:bg-gold/80 hover:scale-105 outline-none shadow-lg shadow-gold/20"
           >
-            Book a Consultation
+            BOOK YOUR DATE TODAY
           </button>
         </div>
       </div>
