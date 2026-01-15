@@ -1,14 +1,19 @@
+
 import React, { useState } from 'react';
-import { Play, Plus } from 'lucide-react';
+import { Play, Plus, Camera, Film, X } from 'lucide-react';
 import { PORTFOLIO } from '../constants';
 
 const Portfolio: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'video' | 'photo'>('video');
   const [filter, setFilter] = useState<'All' | 'SDE' | 'Prenup' | 'Feature'>('All');
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
-  const filteredItems = filter === 'All' 
-    ? PORTFOLIO 
-    : PORTFOLIO.filter(item => item.category === filter);
+  const filteredItems = PORTFOLIO.filter(item => {
+    const matchesTab = item.type === activeTab;
+    const matchesFilter = filter === 'All' || item.category === filter;
+    return matchesTab && matchesFilter;
+  });
 
   return (
     <section id="portfolio" className="pt-32 pb-24 wedding-bg md:pt-40">
@@ -16,7 +21,28 @@ const Portfolio: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
             <span className="text-gold font-bold tracking-widest uppercase text-sm">Visual Journey</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-black mt-2">Latest Works</h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-black mt-2">Our Portfolio</h2>
+            
+            <div className="flex items-center gap-6 mt-8">
+              <button 
+                onClick={() => { setActiveTab('video'); setFilter('All'); }}
+                className={`flex items-center gap-2 pb-2 text-sm font-bold tracking-widest uppercase transition-all border-b-2 ${
+                  activeTab === 'video' ? 'border-gold text-gold' : 'border-transparent text-gray-400 hover:text-black'
+                }`}
+              >
+                <Film size={18} />
+                Cinematic Films
+              </button>
+              <button 
+                onClick={() => { setActiveTab('photo'); setFilter('All'); }}
+                className={`flex items-center gap-2 pb-2 text-sm font-bold tracking-widest uppercase transition-all border-b-2 ${
+                  activeTab === 'photo' ? 'border-gold text-gold' : 'border-transparent text-gray-400 hover:text-black'
+                }`}
+              >
+                <Camera size={18} />
+                Photo Gallery
+              </button>
+            </div>
           </div>
           
           <div className="flex flex-wrap gap-4">
@@ -24,8 +50,8 @@ const Portfolio: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat as any)}
-                className={`px-6 py-2 text-xs font-bold tracking-widest uppercase border-b-2 transition-all ${
-                  filter === cat ? 'border-gold text-gold' : 'border-transparent text-gray-400 hover:text-black'
+                className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase border transition-all ${
+                  filter === cat ? 'bg-gold border-gold text-white shadow-lg' : 'border-neutral-200 text-gray-400 hover:border-black hover:text-black'
                 }`}
               >
                 {cat}
@@ -34,7 +60,7 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12 animate-in fade-in duration-500">
           {filteredItems.map((item) => (
             <div 
               key={item.id} 
@@ -49,7 +75,10 @@ const Portfolio: React.FC = () => {
 
                 <div 
                   className="relative aspect-[4/3] overflow-hidden bg-black cursor-pointer border border-neutral-50"
-                  onClick={() => setActiveVideo(item.videoUrl)}
+                  onClick={() => {
+                    if (item.type === 'video') setActiveVideo(item.videoUrl!);
+                    else setActiveImage(item.fullImageUrl!);
+                  }}
                 >
                   <img
                     src={item.thumbnail}
@@ -59,9 +88,11 @@ const Portfolio: React.FC = () => {
                   
                   <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                     <div className="w-16 h-16 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center text-white mb-4 shadow-xl ring-4 ring-white/20">
-                      <Play fill="white" size={24} />
+                      {item.type === 'video' ? <Play fill="white" size={24} /> : <Plus size={24} />}
                     </div>
-                    <p className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-2">View Film</p>
+                    <p className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
+                      {item.type === 'video' ? 'Play Film' : 'View Image'}
+                    </p>
                   </div>
 
                   <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 text-[8px] font-bold tracking-widest text-white uppercase border border-white/20 group-hover:opacity-0 transition-opacity">
@@ -77,8 +108,15 @@ const Portfolio: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {filteredItems.length === 0 && (
+          <div className="py-32 text-center">
+            <p className="text-gray-400 font-serif italic text-xl">No masterpieces found in this category yet.</p>
+          </div>
+        )}
       </div>
 
+      {/* Video Modal */}
       {activeVideo && (
         <div 
           className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm"
@@ -89,7 +127,7 @@ const Portfolio: React.FC = () => {
               className="absolute -top-14 right-0 text-white hover:text-gold transition-all hover:rotate-90 p-2"
               onClick={(e) => { e.stopPropagation(); setActiveVideo(null); }}
             >
-              <Plus className="rotate-45" size={40} />
+              <X size={40} />
             </button>
             <iframe
               src={`${activeVideo}?autoplay=1`}
@@ -98,6 +136,28 @@ const Portfolio: React.FC = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+          </div>
+        </div>
+      )}
+
+      {/* Image Modal */}
+      {activeImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm"
+          onClick={() => setActiveImage(null)}
+        >
+          <div className="relative max-w-6xl max-h-[90vh] bg-white p-2 shadow-2xl">
+            <button 
+              className="absolute -top-14 right-0 text-white hover:text-gold transition-all hover:rotate-90 p-2"
+              onClick={(e) => { e.stopPropagation(); setActiveImage(null); }}
+            >
+              <X size={40} />
+            </button>
+            <img 
+              src={activeImage} 
+              alt="Portfolio Full Resolution" 
+              className="max-w-full max-h-[85vh] object-contain"
+            />
           </div>
         </div>
       )}
