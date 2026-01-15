@@ -83,7 +83,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     couple: 'Mark Gil Anthony & Maria Nova',
     category: 'Prenup',
     type: 'video',
-    thumbnail: 'https://i.imgur.com/5caLhT1.png',
+    thumbnail: 'https://i.imgur.com/bjTNy9r.jpeg',
     videoUrl: 'https://www.youtube.com/watch?v=85w7yUDdDWo',
     description: 'This prenup film explores the quiet, intimate connection between Mark and Maria. Set against breathtaking landscapes, it captures the anticipation and pure joy of their journey toward the altar.'
   },
@@ -100,12 +100,12 @@ export const PORTFOLIO: PortfolioItem[] = [
   {
     id: 4,
     title: 'Sunset Serenade',
-    couple: 'David & Chloe',
-    category: 'SDE',
+    couple: 'Nel Brian & Xty',
+    category: 'Prenup',
     type: 'video',
-    thumbnail: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=1920&h=1080',
-    videoUrl: 'https://www.facebook.com/clifforddendirofilms/videos/1083074092965611/',
-    description: 'Captured and edited on the same day, this film was the highlight of the reception. It showcases the emotional weight of the ceremony and the vibrant energy of the sunset celebration.'
+    thumbnail: 'https://i.imgur.com/JLNKpWp.jpeg',
+    videoUrl: 'https://www.youtube.com/watch?v=UmKxVKdk7nk',
+    description: 'Now they see daylight after seeing each other and promising their love forever'
   }
 ];
 
@@ -125,7 +125,7 @@ export const PRICING: PricingPackage[] = [
   {
     id: 2,
     name: 'CINEMATIC GRAND PACKAGE',
-    price: '₱20,000',
+    price: '₱25,000',
     description: 'Our most sought-after experience, featuring the iconic Same Day Edit that brings your guests to tears during the reception.',
     image: 'https://i.imgur.com/NPyLaqh.jpeg',
     features: [
@@ -140,7 +140,7 @@ export const PRICING: PricingPackage[] = [
   {
     id: 3,
     name: 'CINEMATIC SIGNATURE PACKAGE',
-    price: '₱15,000',
+    price: '₱18,000',
     description: 'The ultimate storytelling experience covering your journey from the prenup sessions to the grand finale of your wedding day.',
     image: 'https://i.imgur.com/xzldGKc.jpeg',
     features: [
