@@ -89,13 +89,13 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     id: 3,
-    title: 'Enchanted Garden Vows',
-    couple: 'Mark & Elena',
+    title: 'Koren Inspired Pre-Wedding',
+    couple: 'Jimboy & Trizia',
     category: 'Feature',
     type: 'video',
-    thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920&h=1080',
-    videoUrl: 'https://www.youtube.com/watch?v=A8f98rX2o7k',
-    description: 'A feature film that documents the solemnity and celebration of a garden wedding. We focused on the natural light and candid interactions that made this day truly magical.'
+    thumbnail: 'https://i.imgur.com/w7f7CVt.jpeg',
+    videoUrl: 'https://youtu.be/qIG2AHa7Wz8?si=QjfKEkmUAKHWc3z0',
+    description: 'A film of Jim and Trizia's love story in an inspired koren concept "CLOY".'
   },
   {
     id: 4,
