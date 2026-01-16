@@ -10,8 +10,8 @@ export interface PortfolioItem {
   id: number;
   title: string;
   couple: string;
-  category: string;
-  type: 'video' | 'image';
+  category: 'SDE' | 'Prenup' | 'Feature';
+  type: 'video' | 'photo';
   thumbnail: string;
   videoUrl?: string;
   description: string;
