@@ -14,6 +14,7 @@ export interface PortfolioItem {
   type: 'video' | 'photo';
   thumbnail: string;
   videoUrl?: string;
+  fullImageUrl?: string;
   description: string;
 }
 
