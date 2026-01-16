@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
     window.dispatchEvent(new CustomEvent('app-navigate', { detail: { section } }));
   };
 
-  const videoId = 'FcJC_0dqdds';
+  const videoId = '4VqVmxOaaR0';
   const videoParams = [
     'autoplay=1',
     'mute=1',
