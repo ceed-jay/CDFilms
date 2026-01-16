@@ -106,7 +106,27 @@ export const PORTFOLIO: PortfolioItem[] = [
     thumbnail: 'https://i.imgur.com/JLNKpWp.jpeg',
     videoUrl: 'https://www.youtube.com/watch?v=UmKxVKdk7nk',
     description: 'Now they see daylight after seeing each other and promising their love forever'
-  }
+  },
+  {
+    id: 5,
+    title: 'Golden as the Sunset',
+    couple: 'Virgilia & Abundi',
+    category: 'SDE',
+    type: 'video',
+    thumbnail: 'https://i.imgur.com/ZGIyddZ.jpeg',
+    videoUrl: 'https://www.youtube.com/watch?v=mzXFz7gLEZ8',
+    description: 'How time flies imagine 50 years of love with the special someone.'
+  },
+  {
+    id: 6,
+    title: 'Love like Sheets',
+    couple: 'Mariusz & Roda',
+    category: 'SDE',
+    type: 'video',
+    thumbnail: 'https://i.imgur.com/OxXRzjL.jpeg',
+    videoUrl: 'https://www.youtube.com/watch?v=me3LtuyuHro',
+    description: 'It doesn't matter what language you speak as long as you speak the same language and that is love.'
+  },
 ];
 
 export const PRICING: PricingPackage[] = [
