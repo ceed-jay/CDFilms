@@ -109,7 +109,7 @@ export const PORTFOLIO: PortfolioItem[] = [
   },
   {
     id: 5,
-    title: 'Golden as the Sunset',
+    title: 'Golden like the Sunset',
     couple: 'Virgilia & Abundi',
     category: 'SDE',
     type: 'video',
