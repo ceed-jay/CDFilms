@@ -10,12 +10,11 @@ export interface PortfolioItem {
   id: number;
   title: string;
   couple: string;
-  category: 'SDE' | 'Prenup' | 'Feature';
-  type: 'video' | 'photo';
+  category: string;
+  type: 'video' | 'image';
   thumbnail: string;
-  videoUrl?: string; // YouTube link for videos
-  fullImageUrl?: string; // High res for photos
-  description?: string; // The story behind the film
+  videoUrl?: string;
+  description: string;
 }
 
 export interface PricingPackage {
