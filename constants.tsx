@@ -125,7 +125,7 @@ export const PORTFOLIO: PortfolioItem[] = [
     type: 'video',
     thumbnail: 'https://i.imgur.com/OxXRzjL.jpeg',
     videoUrl: 'https://www.youtube.com/watch?v=me3LtuyuHro',
-    description: 'It doesn't matter what language you speak when the language you share is love.'
+    description: 'It does not matter what language you speak when the language you share is love.'
   },
 ];
 
