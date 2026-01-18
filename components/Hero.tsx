@@ -6,7 +6,11 @@ const Hero: React.FC = () => {
     window.dispatchEvent(new CustomEvent('app-navigate', { detail: { section } }));
   };
 
-  const videoId = '4VqVmxOaaR0';
+  // Video ID: FcJC_0dqdds
+  const videoId = 'FcJC_0dqdds';
+  
+  // To enable autoplay in modern browsers, the video MUST be muted (mute=1).
+  // To enable looping, you must provide the playlist parameter with the same video ID.
   const videoParams = [
     'autoplay=1',
     'mute=1',
@@ -29,7 +33,8 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           {/* 
-           
+            Calculated dimensions for 16:9 ratio to ensure background cover.
+            Using a slightly larger width/height (110%) to prevent black bars on window resize.
           */}
           <iframe
             className="absolute top-1/2 left-1/2 w-[115vw] h-[65vw] min-h-[115vh] min-w-[204vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"

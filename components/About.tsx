@@ -36,14 +36,14 @@ const About: React.FC = () => {
                 <p className="text-3xl font-serif text-black">150+</p>
                 <p className="text-sm text-gray-500 uppercase tracking-widest">Weddings Filmed</p>
               </div>
-              <!--<div>
+              <div>
                 <p className="text-3xl font-serif text-black">12</p>
                 <p className="text-sm text-gray-500 uppercase tracking-widest">Awards Won</p>
               </div>
               <div>
                 <p className="text-3xl font-serif text-black">10</p>
                 <p className="text-sm text-gray-500 uppercase tracking-widest">Countries Visited</p>
-              </div>-->
+              </div>
             </div>
           </div>
         </div>
