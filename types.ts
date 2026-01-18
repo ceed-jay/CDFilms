@@ -1,4 +1,3 @@
-
 export interface Service {
   id: string;
   title: string;
@@ -13,9 +12,9 @@ export interface PortfolioItem {
   category: 'SDE' | 'Prenup' | 'Feature';
   type: 'video' | 'photo';
   thumbnail: string;
-  videoUrl?: string;
-  fullImageUrl?: string;
-  description: string;
+  videoUrl?: string; // YouTube link for videos
+  fullImageUrl?: string; // High res for photos
+  description?: string; // The story behind the film
 }
 
 export interface PricingPackage {
