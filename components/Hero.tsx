@@ -1,16 +1,15 @@
 
 import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  videoId: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ videoId }) => {
   const triggerNav = (section: string) => {
     window.dispatchEvent(new CustomEvent('app-navigate', { detail: { section } }));
   };
-
-  // Video ID: FcJC_0dqdds
-  const videoId = 'FcJC_0dqdds';
   
-  // To enable autoplay in modern browsers, the video MUST be muted (mute=1).
-  // To enable looping, you must provide the playlist parameter with the same video ID.
   const videoParams = [
     'autoplay=1',
     'mute=1',
@@ -29,13 +28,8 @@ const Hero: React.FC = () => {
 
   return (
     <section className="h-full w-full flex items-center justify-center relative overflow-hidden bg-black pt-24 md:pt-32">
-      {/* Background Video Container */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
-          {/* 
-            Calculated dimensions for 16:9 ratio to ensure background cover.
-            Using a slightly larger width/height (110%) to prevent black bars on window resize.
-          */}
           <iframe
             className="absolute top-1/2 left-1/2 w-[115vw] h-[65vw] min-h-[115vh] min-w-[204vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
             src={videoUrl}
@@ -46,12 +40,10 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Overlays for Text Legibility & Style */}
       <div className="absolute inset-0 z-[1] bg-black/50 backdrop-blur-[1px]"></div>
       <div className="absolute inset-0 z-[2] wedding-bg opacity-20 mix-blend-overlay"></div>
       <div className="absolute inset-0 z-[3] bg-gradient-to-b from-black/70 via-transparent to-black/80"></div>
 
-      {/* Content Layer */}
       <div className="relative z-10 text-center px-6 max-w-5xl">
         <p className="text-gold text-sm md:text-base font-bold tracking-[0.4em] uppercase mb-4 animate-fade-in-up drop-shadow-md">
           Turning Your Love Story Into Timeless Films

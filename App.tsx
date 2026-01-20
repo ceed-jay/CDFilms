@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -7,12 +8,43 @@ import Portfolio from './components/Portfolio';
 import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Dashboard from './components/Dashboard';
+import { PORTFOLIO, PRICING } from './constants';
+import { PortfolioItem, PricingPackage } from './types';
 
 export type SectionType = 'hero' | 'about' | 'services' | 'portfolio' | 'pricing' | 'contact';
 
 function App() {
   const [activeSection, setActiveSection] = useState<SectionType>('hero');
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const [heroVideoId, setHeroVideoId] = useState(() => localStorage.getItem('heroVideoId') || 'FcJC_0dqdds');
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(() => {
+    const saved = localStorage.getItem('portfolioItems');
+    return saved ? JSON.parse(saved) : PORTFOLIO;
+  });
+  const [pricingPackages, setPricingPackages] = useState<PricingPackage[]>(() => {
+    const saved = localStorage.getItem('pricingPackages');
+    return saved ? JSON.parse(saved) : PRICING;
+  });
+  const [adminPassword, setAdminPassword] = useState(() => localStorage.getItem('adminPassword') || 'admin');
+
+  useEffect(() => {
+    localStorage.setItem('heroVideoId', heroVideoId);
+  }, [heroVideoId]);
+
+  useEffect(() => {
+    localStorage.setItem('portfolioItems', JSON.stringify(portfolioItems));
+  }, [portfolioItems]);
+
+  useEffect(() => {
+    localStorage.setItem('pricingPackages', JSON.stringify(pricingPackages));
+  }, [pricingPackages]);
+
+  useEffect(() => {
+    localStorage.setItem('adminPassword', adminPassword);
+  }, [adminPassword]);
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -21,86 +53,16 @@ function App() {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'F12') {
-        e.preventDefault();
-        return false;
-      }
-
+      if (e.key === 'F12') e.preventDefault();
       const isCtrlOrMeta = e.ctrlKey || e.metaKey;
-      const isShift = e.shiftKey;
-
-      if (isCtrlOrMeta && isShift && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
-        e.preventDefault();
-        return false;
-      }
-
-      if (isCtrlOrMeta && (e.key === 'U' || e.key === 'u')) {
-        e.preventDefault();
-        return false;
-      }
-
-      if (isCtrlOrMeta && (e.key === 'S' || e.key === 's')) {
-        e.preventDefault();
-        return false;
-      }
-
-      if (isCtrlOrMeta && (e.key === 'P' || e.key === 'p')) {
-        e.preventDefault();
-        return false;
-      }
-
-      if (isCtrlOrMeta && (e.key === 'A' || e.key === 'a')) {
-        e.preventDefault();
-        return false;
-      }
+      if (isCtrlOrMeta && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) e.preventDefault();
     };
-
-    const startDeterrent = () => {
-      const deterrent = function() {
-        (function() {
-          (function a() {
-            try {
-              (function b(i) {
-                if (("" + i / i).length !== 1 || i % 20 === 0) {
-                  (function() {}).constructor("debugger")();
-                } else {
-                  debugger;
-                }
-                b(++i);
-              })(0);
-            } catch (e) {
-              setTimeout(a, 50);
-            }
-          })();
-        })();
-      };
-
-      try {
-        deterrent();
-      } catch (e) {}
-    };
-
-    const consoleSpam = setInterval(() => {
-      console.clear();
-      console.log("%cSecurity: Inspection is disabled on this site.", "color: red; font-size: 20px; font-weight: bold;");
-    }, 1000);
-
-    const debuggerInterval = setInterval(startDeterrent, 500);
 
     window.addEventListener('contextmenu', handleContextMenu);
     window.addEventListener('keydown', handleKeyDown);
-
-    window.addEventListener('dragstart', (e) => {
-      if ((e.target as HTMLElement).tagName === 'IMG') {
-        e.preventDefault();
-      }
-    });
-
     return () => {
       window.removeEventListener('contextmenu', handleContextMenu);
       window.removeEventListener('keydown', handleKeyDown);
-      clearInterval(debuggerInterval);
-      clearInterval(consoleSpam);
     };
   }, []);
 
@@ -118,21 +80,43 @@ function App() {
       const target = e.detail?.section as SectionType;
       if (target) navigateTo(target);
     };
+    const handleAdmin = () => setIsAdmin(true);
+
     window.addEventListener('app-navigate', handleNav);
-    return () => window.removeEventListener('app-navigate', handleNav);
+    window.addEventListener('open-admin', handleAdmin);
+    return () => {
+      window.removeEventListener('app-navigate', handleNav);
+      window.removeEventListener('open-admin', handleAdmin);
+    };
   }, [activeSection]);
 
   const renderSection = () => {
     switch (activeSection) {
-      case 'hero': return <Hero />;
+      case 'hero': return <Hero videoId={heroVideoId} />;
       case 'about': return <About />;
       case 'services': return <Services />;
-      case 'portfolio': return <Portfolio />;
-      case 'pricing': return <Pricing />;
+      case 'portfolio': return <Portfolio items={portfolioItems} />;
+      case 'pricing': return <Pricing packages={pricingPackages} />;
       case 'contact': return <Contact />;
-      default: return <Hero />;
+      default: return <Hero videoId={heroVideoId} />;
     }
   };
+
+  if (isAdmin) {
+    return (
+      <Dashboard 
+        onClose={() => setIsAdmin(false)}
+        heroVideoId={heroVideoId}
+        setHeroVideoId={setHeroVideoId}
+        portfolioItems={portfolioItems}
+        setPortfolioItems={setPortfolioItems}
+        pricingPackages={pricingPackages}
+        setPricingPackages={setPricingPackages}
+        adminPassword={adminPassword}
+        setAdminPassword={setAdminPassword}
+      />
+    );
+  }
 
   return (
     <div className="h-screen w-full relative bg-white overflow-hidden select-none" onCopy={(e) => e.preventDefault()}>
@@ -152,36 +136,11 @@ function App() {
       </main>
       
       <style>{`
-        * {
-          -webkit-tap-highlight-color: transparent;
-          outline: none !important;
-        }
-
-        body, html, #root {
-          user-select: none !important;
-          -webkit-user-select: none !important;
-          -moz-user-select: none !important;
-          -ms-user-select: none !important;
-        }
-
-        img {
-          -webkit-user-drag: none !important;
-          user-drag: none !important;
-          pointer-events: none !important;
-        }
-
-        .select-none {
-          user-select: none !important;
-          -webkit-user-select: none !important;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
+        * { -webkit-tap-highlight-color: transparent; outline: none !important; }
+        body, html, #root { user-select: none !important; -webkit-user-select: none !important; }
+        img { -webkit-user-drag: none !important; pointer-events: none !important; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </div>
   );

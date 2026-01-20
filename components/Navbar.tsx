@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Home, Info, Video, Briefcase, Box, Calendar } from 'lucide-react';
 import { SectionType } from '../App';
 import { LOGO_URL } from '../constants';
@@ -10,6 +11,8 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const clickCount = useRef(0);
+  const lastClickTime = useRef(0);
 
   const isDarkSection = ['portfolio'].includes(activeSection);
 
@@ -20,6 +23,21 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
     { name: 'Portfolio', id: 'portfolio', icon: <Video size={14} /> },
     { name: 'Packages', id: 'pricing', icon: <Box size={14} /> },
   ];
+
+  const handleLogoClick = () => {
+    const now = Date.now();
+    if (now - lastClickTime.current > 2000) {
+      clickCount.current = 1;
+    } else {
+      clickCount.current += 1;
+    }
+    lastClickTime.current = now;
+
+    if (clickCount.current === 3) {
+      window.dispatchEvent(new CustomEvent('open-admin'));
+      clickCount.current = 0;
+    }
+  };
 
   const handleLinkClick = (id: SectionType) => {
     onNavigate(id);
@@ -51,21 +69,21 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
           }
         `}
       >
-        <button 
-          onClick={() => handleLinkClick('hero')} 
-          className={`flex items-center gap-2 outline-none transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 scale-110' : 'pl-3'}`}
+        <div 
+          onClick={handleLogoClick} 
+          className={`flex items-center gap-2 cursor-pointer transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 scale-110' : 'pl-3'}`}
         >
           <img 
             src={LOGO_URL} 
             alt="CDFilms Logo" 
-            className="w-6 h-6 object-contain"
+            className="w-6 h-6 object-contain pointer-events-auto"
           />
           <span className={`text-sm font-serif font-bold tracking-tighter transition-colors ${
             isDarkSection && !isMobileMenuOpen ? 'text-white' : 'text-black'
           }`}>
             CD<span className="text-gold">FILMS</span>
           </span>
-        </button>
+        </div>
 
         <div className={`hidden md:flex items-center gap-1 ${isMobileMenuOpen ? 'hidden' : ''}`}>
           {navLinks.map((link) => (
@@ -80,9 +98,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => {
                 }
               `}
             >
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white px-2 py-1 rounded text-[9px] pointer-events-none lowercase">
-                {link.name}
-              </span>
               {link.icon}
               <span className={activeSection === link.id ? 'block' : 'hidden lg:block'}>{link.name}</span>
             </button>
